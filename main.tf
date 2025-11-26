@@ -17,13 +17,7 @@ provider "google" {
 
 # Enable Required APIs
 resource "google_project_service" "enabled_apis" {
-  for_each = toset([
-    "iam.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "sqladmin.googleapis.com",
-    "compute.googleapis.com",
-    "servicenetworking.googleapis.com"
-  ])
+  for_each = toset(var.enabled_apis)
 
   project             = var.project_id
   service             = each.key

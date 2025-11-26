@@ -14,6 +14,11 @@ variable "region" {
   type        = string
 }
 
+variable "enabled_apis" {
+  description = "List of Google APIs to enable for the project. Override per environment via tfvars."
+  type        = list(string)
+}
+
 variable "service_accounts" {
   description = "Map of service accounts and their roles"
   type = map(object({
