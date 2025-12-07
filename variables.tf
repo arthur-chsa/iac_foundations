@@ -1,28 +1,28 @@
-variable "google_credentials" {
-  description = "GCP service account credentials (JSON)"
-  type        = string
-  sensitive   = true
-}
-
 variable "project_id" {
-  description = "GCP project ID"
   type        = string
+  description = "GCP project ID"
 }
 
 variable "region" {
-  description = "Default region"
   type        = string
+  description = "GCP region"
+}
+
+variable "google_credentials" {
+  type        = string
+  description = "GCP credentials JSON"
+  sensitive   = true
 }
 
 variable "enabled_apis" {
-  description = "List of Google APIs to enable for the project. Override per environment via tfvars."
   type        = list(string)
+  description = "List of Google APIs to enable"
 }
 
 variable "service_accounts" {
-  description = "Map of service accounts and their roles"
   type = map(object({
     display_name = string
     roles        = list(string)
   }))
+  description = "Service accounts to create with their roles"
 }
